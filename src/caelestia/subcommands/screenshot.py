@@ -2,9 +2,9 @@ import subprocess
 from argparse import Namespace
 from datetime import datetime
 
-from caelestia.utils import hypr
-from caelestia.utils.notify import notify
-from caelestia.utils.paths import screenshots_cache_dir, screenshots_dir
+from cyber.utils import hypr
+from cyber.utils.notify import notify
+from cyber.utils.paths import screenshots_cache_dir, screenshots_dir
 
 
 class Command:
@@ -22,7 +22,7 @@ class Command:
     def region(self) -> None:
         if self.args.region == "slurp":
             subprocess.run(
-                ["qs", "-c", "caelestia", "ipc", "call", "picker", "openFreeze" if self.args.freeze else "open"]
+                ["qs", "-c", "cyber", "ipc", "call", "picker", "openFreeze" if self.args.freeze else "open"]
             )
         else:
             sc_data = subprocess.check_output(["grim", "-l", "0", "-g", self.args.region.strip(), "-"])

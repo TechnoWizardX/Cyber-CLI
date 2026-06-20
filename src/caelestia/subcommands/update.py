@@ -2,14 +2,14 @@ import sys
 from argparse import Namespace
 from pathlib import Path
 
-from caelestia.utils.dots.deployer import Deployer
-from caelestia.utils.dots.diff import Changeset
-from caelestia.utils.dots.manifest import ComponentError, Manifest, ManifestError
-from caelestia.utils.dots.misc import build_local_packages, run_hooks
-from caelestia.utils.dots.packages import PackageError, PackageInstaller
-from caelestia.utils.dots.source import DotsSource, SourceError
-from caelestia.utils.dots.state import DotsState
-from caelestia.utils.io import disable_input, fatal, info, log, prompt_selection, warn
+from cyber.utils.dots.deployer import Deployer
+from cyber.utils.dots.diff import Changeset
+from cyber.utils.dots.manifest import ComponentError, Manifest, ManifestError
+from cyber.utils.dots.misc import build_local_packages, run_hooks
+from cyber.utils.dots.packages import PackageError, PackageInstaller
+from cyber.utils.dots.source import DotsSource, SourceError
+from cyber.utils.dots.state import DotsState
+from cyber.utils.io import disable_input, fatal, info, log, prompt_selection, warn
 
 
 class Command:
@@ -24,7 +24,7 @@ class Command:
 
         state = DotsState.load()
         if state.applied_rev is None:
-            fatal("dots not installed yet. Run `caelestia install` first.")
+            fatal("dots not installed yet. Run `cyber install` first.")
 
         # Run system update
         try:

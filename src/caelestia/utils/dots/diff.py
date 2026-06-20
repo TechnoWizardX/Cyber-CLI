@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from caelestia.utils.dots.manifest import ManifestEntry
-from caelestia.utils.dots.source import DotsSource, SourceError
-from caelestia.utils.io import warn
+from cyber.utils.dots.manifest import ManifestEntry
+from cyber.utils.dots.source import DotsSource, SourceError
+from cyber.utils.io import warn
 
 
 class _Continue(Exception):

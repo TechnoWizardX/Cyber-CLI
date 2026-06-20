@@ -7,7 +7,7 @@ from pathlib import Path
 from string import Template
 from typing import Any
 
-from caelestia.utils.io import warn
+from cyber.utils.io import warn
 
 _XDG_DEFAULTS = {
     "XDG_CONFIG_HOME": str(Path.home() / ".config"),

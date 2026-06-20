@@ -2,8 +2,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from caelestia.utils.dots.manifest import Manifest
-from caelestia.utils.paths import dots_dir, get_config
+from cyber.utils.dots.manifest import Manifest
+from cyber.utils.paths import dots_dir, get_config
 
 
 class SourceError(Exception):
@@ -15,7 +15,7 @@ class DotsSource:
 
     def __init__(self) -> None:
         cfg = get_config().get("dots", {})
-        self.url = cfg.get("url", "https://github.com/caelestia-dots/caelestia.git")
+        self.url = cfg.get("url", "https://github.com/cyber-dots/cyber.git")
         self.branch = cfg.get("branch", "main")
         # Cache git blobs by (ref, relpath); objects are immutable for a given rev
         self._blob_cache: dict[tuple[str, str], bytes] = {}

@@ -7,10 +7,10 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from caelestia.utils.colour import get_dynamic_colours
-from caelestia.utils.hypr import is_lua_config
-from caelestia.utils.io import log_exception
-from caelestia.utils.paths import (
+from cyber.utils.colour import get_dynamic_colours
+from cyber.utils.hypr import is_lua_config
+from cyber.utils.io import log_exception
+from cyber.utils.paths import (
     atomic_write,
     c_state_dir,
     config_dir,
@@ -20,7 +20,7 @@ from caelestia.utils.paths import (
     theme_dir,
     user_templates_dir,
 )
-from caelestia.utils.scheme import get_scheme
+from cyber.utils.scheme import get_scheme
 
 
 def gen_conf(colours: dict[str, str]) -> str:
@@ -156,20 +156,20 @@ def apply_discord(scss: str) -> None:
         conf = subprocess.check_output(["sass", "-I", tmp_dir, templates_dir / "discord.scss"], text=True)
 
     for client in "Equicord", "Vencord", "BetterDiscord", "equibop", "vesktop", "legcord":
-        atomic_write(config_dir / client / "themes/caelestia.theme.css", conf)
+        atomic_write(config_dir / client / "themes/cyber.theme.css", conf)
 
 
 @log_exception
 def apply_pandora(colours: dict[str, str], mode: str) -> None:
     template = gen_replace(colours, templates_dir / "pandora.json", hash=True)
     template = template.replace("{{ $mode }}", mode)
-    atomic_write(data_dir / "PandoraLauncher/themes/caelestia.json", template)
+    atomic_write(data_dir / "PandoraLauncher/themes/cyber.json", template)
 
 
 @log_exception
 def apply_spicetify(colours: dict[str, str], mode: str) -> None:
     template = gen_replace(colours, templates_dir / f"spicetify-{mode}.ini")
-    atomic_write(config_dir / "spicetify/Themes/caelestia/color.ini", template)
+    atomic_write(config_dir / "spicetify/Themes/cyber/color.ini", template)
 
 
 @log_exception
@@ -181,7 +181,7 @@ def apply_fuzzel(colours: dict[str, str]) -> None:
 @log_exception
 def apply_btop(colours: dict[str, str]) -> None:
     template = gen_replace(colours, templates_dir / "btop.theme", hash=True)
-    atomic_write(config_dir / "btop/themes/caelestia.theme", template)
+    atomic_write(config_dir / "btop/themes/cyber.theme", template)
     subprocess.run(["killall", "-USR2", "btop"], stderr=subprocess.DEVNULL)
 
 
@@ -324,7 +324,7 @@ def apply_gtk(colours: dict[str, str], mode: str, icon_theme: str | None = None)
 @log_exception
 def apply_qt(colours: dict[str, str], mode: str, icon_theme: str | None = None) -> None:
     colours = gen_replace(colours, templates_dir / f"qt{mode}.colors", hash=True)
-    atomic_write(config_dir / "qtengine/caelestia.colors", colours)
+    atomic_write(config_dir / "qtengine/cyber.colors", colours)
 
     config = (templates_dir / "qtengine.json").read_text()
     config = config.replace("{{ $mode }}", mode.capitalize())
@@ -339,7 +339,7 @@ def apply_warp(colours: dict[str, str], mode: str) -> None:
 
     template = gen_replace(colours, templates_dir / "warp.yaml", hash=True)
     template = template.replace("{{ $warp_mode }}", warp_mode)
-    atomic_write(data_dir / "warp-terminal/themes/caelestia.yaml", template)
+    atomic_write(data_dir / "warp-terminal/themes/cyber.yaml", template)
 
 
 @log_exception
@@ -363,7 +363,7 @@ def apply_chromium(colours: dict[str, str]) -> None:
 
         # Use tee instead of atomic_write cause we need sudo
         subprocess.run(
-            ["sudo", "-n", "tee", str(policy_dir / "caelestia.json")],
+            ["sudo", "-n", "tee", str(policy_dir / "cyber.json")],
             input=json.dumps({"BrowserThemeColor": theme_color, "BrowserColorScheme": "device"}),
             text=True,
             stdout=subprocess.DEVNULL,
@@ -377,7 +377,7 @@ def apply_chromium(colours: dict[str, str]) -> None:
 
 
 def apply_zed(colours: dict[str, str], mode: str) -> None:
-    theme_path = config_dir / "zed/themes/caelestia.json"
+    theme_path = config_dir / "zed/themes/cyber.json"
     # Zed's file watcher does not detect changes through symlinks,
     # so resolve to a regular file before writing
     if theme_path.is_symlink():

@@ -1,9 +1,9 @@
 import subprocess
 from pathlib import Path
 
-from caelestia.utils.paths import config_dir, data_dir
+from cyber.utils.paths import config_dir, data_dir
 
-LEGACY_META_PKG = "caelestia-meta"
+LEGACY_META_PKG = "cyber-meta"
 
 _confs = [
     "hypr",
@@ -30,7 +30,7 @@ def _find_legacy_repo(path: Path) -> Path | None:
         return
 
     # Check remote
-    if remote.strip() != "https://github.com/caelestia-dots/caelestia.git":
+    if remote.strip() != "https://github.com/cyber-dots/cyber.git":
         return
 
     # Ignore anything outside home
@@ -60,7 +60,7 @@ def detect_legacy_repo() -> Path | None:
         if legacy_dir:
             return legacy_dir
 
-    return _find_legacy_repo(data_dir / "caelestia")
+    return _find_legacy_repo(data_dir / "cyber")
 
 
 def legacy_config_symlinks(base: Path, legacy_dir: Path | None) -> list[Path]:
@@ -81,7 +81,7 @@ def legacy_symlinks(legacy_dir: Path | None) -> list[Path]:
 
     extras = [
         *(Path.home() / ".zen").glob("*/chrome/userChrome.css"),
-        Path.home() / ".local/lib/caelestia/caelestiafox",
+        Path.home() / ".local/lib/cyber/cyberfox",
     ]
 
     return [*legacy_config_symlinks(config_dir, legacy_dir), *_filter_candidates(extras, legacy_dir)]

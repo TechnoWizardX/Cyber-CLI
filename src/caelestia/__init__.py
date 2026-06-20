@@ -1,6 +1,6 @@
-from caelestia.parser import parse_args
-from caelestia.utils.io import log
-from caelestia.utils.version import print_version
+from cyber.parser import parse_args
+from cyber.utils.io import log
+from cyber.utils.version import print_version
 
 
 def main() -> None:

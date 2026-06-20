@@ -1,9 +1,9 @@
 import json
 from dataclasses import dataclass, field
 
-from caelestia.utils.dots.packages import DEFAULT_AUR_HELPER
-from caelestia.utils.io import warn
-from caelestia.utils.paths import atomic_dump, dots_state_path
+from cyber.utils.dots.packages import DEFAULT_AUR_HELPER
+from cyber.utils.io import warn
+from cyber.utils.paths import atomic_dump, dots_state_path
 
 
 @dataclass

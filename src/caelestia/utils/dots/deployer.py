@@ -2,7 +2,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from caelestia.utils.paths import cache_dir, config_dir, data_dir, dots_dir, state_dir
+from cyber.utils.paths import cache_dir, config_dir, data_dir, dots_dir, state_dir
 
 # Dirs to never prune even if empty
 _PROTECTED_DIRS = frozenset({Path.home(), config_dir, data_dir, state_dir, cache_dir})

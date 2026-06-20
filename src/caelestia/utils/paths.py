@@ -5,7 +5,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from caelestia.utils.io import warn
+from cyber.utils.io import warn
 
 config_dir: Path = Path(os.getenv("XDG_CONFIG_HOME", Path.home() / ".config"))
 data_dir: Path = Path(os.getenv("XDG_DATA_HOME", Path.home() / ".local/share"))
@@ -14,10 +14,10 @@ cache_dir: Path = Path(os.getenv("XDG_CACHE_HOME", Path.home() / ".cache"))
 pictures_dir: Path = Path(os.getenv("XDG_PICTURES_DIR", Path.home() / "Pictures"))
 videos_dir: Path = Path(os.getenv("XDG_VIDEOS_DIR", Path.home() / "Videos"))
 
-c_config_dir: Path = config_dir / "caelestia"
-c_data_dir: Path = data_dir / "caelestia"
-c_state_dir: Path = state_dir / "caelestia"
-c_cache_dir: Path = cache_dir / "caelestia"
+c_config_dir: Path = config_dir / "cyber"
+c_data_dir: Path = data_dir / "cyber"
+c_state_dir: Path = state_dir / "cyber"
+c_cache_dir: Path = cache_dir / "cyber"
 
 user_config_path: Path = c_config_dir / "cli.json"
 cli_data_dir: Path = Path(__file__).parent.parent / "data"

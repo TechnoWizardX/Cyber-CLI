@@ -5,7 +5,7 @@ import tempfile
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from caelestia.utils.io import fatal, info, warn
+from cyber.utils.io import fatal, info, warn
 
 DEFAULT_AUR_HELPER = "paru"
 AUR_HELPERS = DEFAULT_AUR_HELPER, "yay"

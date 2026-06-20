@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from caelestia.subcommands import (
+from cyber.subcommands import (
     clipboard,
     emoji,
     install,
@@ -14,17 +14,17 @@ from caelestia.subcommands import (
     update,
     wallpaper,
 )
-from caelestia.utils.dots.manifest import Manifest
-from caelestia.utils.dots.packages import AUR_HELPERS
-from caelestia.utils.dots.source import DotsSource
-from caelestia.utils.io import warn
-from caelestia.utils.paths import wallpapers_dir
-from caelestia.utils.scheme import get_scheme_names, scheme_variants
-from caelestia.utils.wallpaper import get_wallpaper
+from cyber.utils.dots.manifest import Manifest
+from cyber.utils.dots.packages import AUR_HELPERS
+from cyber.utils.dots.source import DotsSource
+from cyber.utils.io import warn
+from cyber.utils.paths import wallpapers_dir
+from cyber.utils.scheme import get_scheme_names, scheme_variants
+from cyber.utils.wallpaper import get_wallpaper
 
 
 def parse_args() -> tuple[argparse.ArgumentParser, argparse.Namespace]:
-    parser = argparse.ArgumentParser(prog="caelestia", description="Main control script for the Caelestia dotfiles")
+    parser = argparse.ArgumentParser(prog="cyber", description="Main control script for the CyberShell dotfiles")
     parser.add_argument("-v", "--version", action="store_true", help="print the current version")
 
     # Add subcommand parsers
@@ -148,7 +148,7 @@ def parse_args() -> tuple[argparse.ArgumentParser, argparse.Namespace]:
     # Create parser for install opts
     install_parser = command_parser.add_parser(
         "install",
-        help="install the Caelestia dotfiles",
+        help="install the CyberShell dotfiles",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     install_parser.set_defaults(cls=install.Command)
@@ -163,7 +163,7 @@ def parse_args() -> tuple[argparse.ArgumentParser, argparse.Namespace]:
     _set_install_epilog(install_parser)
 
     # Create parser for update opts
-    update_parser = command_parser.add_parser("update", help="update the Caelestia dotfiles")
+    update_parser = command_parser.add_parser("update", help="update the CyberShell dotfiles")
     update_parser.set_defaults(cls=update.Command)
     update_parser.add_argument("--aur-helper", choices=AUR_HELPERS, help="the AUR helper to use")
     update_parser.add_argument("--noconfirm", action="store_true", help="use defaults for all prompts")

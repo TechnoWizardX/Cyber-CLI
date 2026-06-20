@@ -3,21 +3,21 @@ import textwrap
 from argparse import Namespace
 from pathlib import Path
 
-from caelestia.utils.dots.deployer import Deployer
-from caelestia.utils.dots.legacy import (
+from cyber.utils.dots.deployer import Deployer
+from cyber.utils.dots.legacy import (
     LEGACY_META_PKG,
     detect_legacy_repo,
     legacy_config_symlinks,
     legacy_symlinks,
     legacy_to_delete,
 )
-from caelestia.utils.dots.manifest import ComponentError, Manifest, ManifestError
-from caelestia.utils.dots.misc import build_local_packages, run_hooks
-from caelestia.utils.dots.packages import DEFAULT_AUR_HELPER, PackageError, PackageInstaller
-from caelestia.utils.dots.source import DotsSource, SourceError
-from caelestia.utils.dots.state import DotsState
-from caelestia.utils.io import confirm, disable_input, fatal, info, log, pause, prompt_selection, warn
-from caelestia.utils.paths import (
+from cyber.utils.dots.manifest import ComponentError, Manifest, ManifestError
+from cyber.utils.dots.misc import build_local_packages, run_hooks
+from cyber.utils.dots.packages import DEFAULT_AUR_HELPER, PackageError, PackageInstaller
+from cyber.utils.dots.source import DotsSource, SourceError
+from cyber.utils.dots.state import DotsState
+from cyber.utils.io import confirm, disable_input, fatal, info, log, pause, prompt_selection, warn
+from cyber.utils.paths import (
     config_backup_dir,
     config_dir,
 )
@@ -82,7 +82,7 @@ class Command:
 
     def print_greeting(self) -> None:
         print(
-            "\033[38;2;150;241;241m"  # Caelestia colour
+            "\033[38;2;150;241;241m"  # CyberShell colour
             + textwrap.dedent(
                 r"""
                 ╭─────────────────────────────────────────────────╮
@@ -97,7 +97,7 @@ class Command:
             )
             + "\033[0m"
         )
-        info("Welcome to the Caelestia dotfiles installer!")
+        info("Welcome to the CyberShell dotfiles installer!")
         info("Here's a quick overview on what this command is going to do:")
         info("  - Install dependencies")
         info("  - Install config files")
@@ -238,7 +238,7 @@ class Command:
             return
 
         print()
-        log("Found a legacy Caelestia installation...")
+        log("Found a legacy CyberShell installation...")
         if not confirm("Clear legacy installation?"):
             return
 
@@ -257,10 +257,10 @@ class Command:
 
     def print_done(self) -> None:
         print()
-        info("All done! Caelestia has been installed.")
+        info("All done! CyberShell has been installed.")
         info("A few things to finish up:")
         info("  - A reboot is recommended for all changes take effect")
-        info("  - Edit `~/.config/caelestia/hypr-vars.conf` to set default apps, keybinds and much more")
-        info("  - Edit `~/.config/caelestia/hypr-user.conf` to set your monitor layout and other Hyprland configs")
-        info("  - Run `caelestia update` later to pull in the latest changes")
+        info("  - Edit `~/.config/cyber/hypr-vars.conf` to set default apps, keybinds and much more")
+        info("  - Edit `~/.config/cyber/hypr-user.conf` to set your monitor layout and other Hyprland configs")
+        info("  - Run `cyber update` later to pull in the latest changes")
         info("Enjoy! For support (or to just hang out), join our Discord server: https://discord.gg/BGDCFCmMBk")

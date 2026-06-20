@@ -6,9 +6,9 @@ from argparse import Namespace
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from caelestia.utils import hypr
-from caelestia.utils.io import error, fatal, info, log, warn
-from caelestia.utils.paths import get_config
+from cyber.utils import hypr
+from cyber.utils.io import error, fatal, info, log, warn
+from cyber.utils.paths import get_config
 
 
 class WindowRule:

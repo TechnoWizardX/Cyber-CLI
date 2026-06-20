@@ -1,11 +1,11 @@
 import os
 import subprocess
 
-from caelestia.utils.dots.manifest import Manifest
-from caelestia.utils.dots.packages import PackageInstaller
-from caelestia.utils.dots.source import DotsSource
-from caelestia.utils.io import info, log, warn
-from caelestia.utils.paths import dots_dir
+from cyber.utils.dots.manifest import Manifest
+from cyber.utils.dots.packages import PackageInstaller
+from cyber.utils.dots.source import DotsSource
+from cyber.utils.io import info, log, warn
+from cyber.utils.paths import dots_dir
 
 
 def build_local_packages(installer: PackageInstaller, source: DotsSource, paths: list[str]) -> dict[str, list[str]]:

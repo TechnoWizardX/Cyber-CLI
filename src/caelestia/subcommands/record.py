@@ -6,9 +6,9 @@ from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
 
-from caelestia.utils import hypr
-from caelestia.utils.notify import close_notification, notify
-from caelestia.utils.paths import get_config, recording_notif_path, recording_path, recordings_dir
+from cyber.utils import hypr
+from cyber.utils.notify import close_notification, notify
+from cyber.utils.paths import get_config, recording_notif_path, recording_path, recordings_dir
 
 RECORDER = "gpu-screen-recorder"
 
